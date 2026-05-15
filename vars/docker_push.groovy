@@ -1,7 +1,7 @@
 def call(Map config){
   withCredentials([usernamePassword(credentialsId: "dockerhubcred",passwordVariable: "dockerHubPass",usernameVariable: "dockerHubUser")]){
     echo "This is pushing code to docker hub repo"
-    sh "docker login -u ${dockerHubUser} -p ${dockerHubPass} "
+    sh "docker login -u ${dockerHubUser} -p ${dockerHubPass}"
     sh "docker push ${config.dockerhubuser}/${config.Project}:${config.ImageTag}"
   }
   echo "Image push is successfull"
